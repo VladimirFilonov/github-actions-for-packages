@@ -57,11 +57,8 @@ jobs:
       with:
         name: webpack artifacts
         path: public
-    - name: Build container image
-      uses: docker/build-push-action@v1
+    - name: Build, Tag, Push
+      uses: mattdavis0351/actions/docker-gpr@v1.3.0
       with:
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
-        registry: docker.pkg.github.com
-        repository: takeoffn/github-actions-for-packages/tic-tac-toe
-        tag_with_sha: true
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        image-name: tic-tac-toe
